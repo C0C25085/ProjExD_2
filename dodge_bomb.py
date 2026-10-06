@@ -29,10 +29,8 @@ def check_bound(rect: pg.Rect) -> tuple[bool, bool]:
 
 def gameover(screen: pg.Surface) -> None:
     go_img = pg.Surface((WIDTH, HEIGHT))
-    a = pg.Rect(0,0,WIDTH, HEIGHT)
-    pg.draw.rect(go_img, (0, 0, 0), a)
-    go_img.set_alpha(220)
-    
+    pg.draw.rect(go_img, (0, 0, 0), (0,0,800,600))
+    go_img.set_alpha(220)   
 
     fonto = pg.font.Font(None, 80)
     txt = fonto.render("Game Over",
@@ -50,8 +48,6 @@ def gameover(screen: pg.Surface) -> None:
     go_img.blit(ko2_img, k2_rct)
     screen.blit(go_img, [0,0])
 
-
-
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -63,6 +59,7 @@ def main():
     pg.draw.circle(bb_img, (255, 0, 0), (10, 10), 10)  # 練習2：赤い爆弾
     bb_img.set_colorkey((0, 0, 0))  # 練習2：四隅の黒い部分を透過する
     bb_rct = bb_img.get_rect()
+
     bb_rct.centerx = random.randint(0, WIDTH)  # 横座標用の乱数
     bb_rct.centery = random.randint(0, HEIGHT)  # 縦座標用の乱数
     vx, vy = +5, +5  # 練習2：爆弾の初期速度
